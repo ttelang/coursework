@@ -13,11 +13,12 @@ public class Solution {
     }
 
     /**
-    * This is the most optimal solution as after we compute the results, we save them!, so
-    * we don't have to compute them again when calling fibonacci(n - 2). Note this could
-    * also be an ArrayList
+    * This is more optimal solution as after we compute the results, we save them!, so
+    * we don't have to compute them again when calling fibonacci(n - 2). You don't need to store
+    * the first two values as no computation is required for them. 
     */
-    public static Map<Integer, Integer> fibonacciResults = new HashMap<Integer, Integer>();
+    public static List<Integer> fibonacciResults = new ArrayList<>();
+
     public static int fibonacci(int n) {
         if (fibonacciResults.get(n) != null) {
             return fibonacciResults.get(n);
@@ -29,14 +30,20 @@ public class Solution {
             return 1;
         } else {
             int number = fibonacci(n - 1) + fibonacci(n - 2);
-            fibonacciResults.put(n, number);
+            fibonacciResults.add(n, number);
             return number;
         }
     }
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         scanner.close();
+
+        for (int i = 0; i < n+1; i++) {
+          fibonacciResults.add(null);
+        }
+        
         System.out.println(fibonacci(n));
     }
 }
