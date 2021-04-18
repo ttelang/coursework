@@ -1,34 +1,34 @@
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
-import java.util.regex.*;
+import java.util.Scanner;
 
 public class Solution {
 
     /**
-    * Your solution in here. Just need to add the number in a variable type long so you
-    * don't face overflow.
+    * Adds the elements in the number array
+    * @param n number of items in the array
+    * @param ar array of numbers
+    * @return the sum of all array elements
     */
-    static long aVeryBigSum(int n, long[] ar) {
-        long sum = 0;
-        for (int i = 0; i < n; i++) {
-            sum += ar[i];
+    static long aVeryBigSum(long[] ar) {
+        long sum = 0; 
+        for (long num: ar) {
+            sum += num; 
         }
         return sum;
     }
 
-    /**
-    * HackerRank provides this code.
-    */
-    public static void main(String[] args) {
+    public static void main(String... args) {
         Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
+        int n = in.nextInt(); // count of elements in the array
+
         long[] ar = new long[n];
-        for(int ar_i = 0; ar_i < n; ar_i++){
-            ar[ar_i] = in.nextLong();
+
+        for(int i = 0; i < n; i++){
+            ar[i] = in.nextLong();
         }
-        long result = aVeryBigSum(n, ar);
+        in.close();
+        long result = aVeryBigSum(ar);
+
         System.out.println(result);
+
     }
 }
